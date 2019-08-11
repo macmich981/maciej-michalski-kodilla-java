@@ -26,10 +26,10 @@ public class CollectionTestSuite {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
-        List<Integer> results = oddNumbersExterminator.exterminate(testNumbers);
+        List<Integer> results = oddNumbersExterminator.exterminate(Collections.emptyList());
         System.out.println("Testing: " + results);
         //Then
-        Assert.assertFalse(results.isEmpty());
+        Assert.assertTrue(results.isEmpty());
     }
 
     @Test
@@ -40,8 +40,6 @@ public class CollectionTestSuite {
         List<Integer> results = oddNumbersExterminator.exterminate(testNumbers);
         System.out.println("Testing: " + results);
         //Then
-        Assert.assertTrue(results.get(0) == 10);
-        Assert.assertTrue(results.get(1) == 4);
-        Assert.assertTrue(results.get(2) == 78);
+        Assert.assertEquals(results, Arrays.asList(10, 4, 78));
     }
 }
