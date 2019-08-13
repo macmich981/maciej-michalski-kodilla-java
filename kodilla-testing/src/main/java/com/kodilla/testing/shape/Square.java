@@ -3,12 +3,15 @@ package com.kodilla.testing.shape;
 import java.util.Objects;
 
 public class Square implements Shape{
-    private String shapeName;
-    private double field;
+    private static final String NAME = "Square";
+    private double side;
 
-    public Square(String shapeName, double a) {
-        this.shapeName = shapeName;
-        this.field = Math.pow(a, 2);
+    public Square(double side) {
+        this.side = side;
+    }
+
+    private double field() {
+        return Math.pow(side, 2);
     }
 
     @Override
@@ -16,28 +19,24 @@ public class Square implements Shape{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Square square = (Square) o;
-        return Double.compare(square.field, field) == 0 &&
-                Objects.equals(shapeName, square.shapeName);
+        return Double.compare(square.side, side) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shapeName, field);
+        return Objects.hash(side);
     }
 
     @Override
     public String toString() {
-        return "Square{" +
-                "shapeName='" + shapeName + '\'' +
-                ", field=" + field +
-                '}';
+        return String.format("%s(%f)", NAME, side);
     }
 
     public String getShapeName() {
-        return shapeName;
+        return NAME;
     }
 
     public double getField() {
-        return field;
+        return field();
     }
 }

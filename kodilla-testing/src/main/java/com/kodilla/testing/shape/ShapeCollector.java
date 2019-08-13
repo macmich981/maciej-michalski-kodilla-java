@@ -5,19 +5,30 @@ import java.util.*;
 public class ShapeCollector {
     List<Shape> shapes = new ArrayList<>();
 
-    public boolean addFigure(Shape shape) {
-        return false;
+    public void addFigure(Shape shape) {
+        shapes.add(shape);
     }
 
     public boolean removeFigure(Shape shape) {
-        return false;
+        boolean result = false;
+        if (shapes.contains(shape)){
+            shapes.remove(shape);
+            result = true;
+        }
+        return result;
     }
 
     public Shape getShape(int shapeNumber) {
-        return null;
+        Shape theShape = null;
+        if (shapeNumber >= 0 && shapeNumber < shapes.size()) {
+            theShape = shapes.get(shapeNumber);
+        }
+        return theShape;
     }
 
     public void showFigures() {
-        System.out.println("Square{shapeName='Square1', field=25}");
+        for (Shape shape : shapes) {
+            System.out.println(shape.toString());
+        }
     }
 }

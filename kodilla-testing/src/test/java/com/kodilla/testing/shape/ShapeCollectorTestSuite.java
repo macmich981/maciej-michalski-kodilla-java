@@ -1,6 +1,7 @@
 package com.kodilla.testing.shape;
 
 import org.junit.*;
+import java.io.*;
 
 public class ShapeCollectorTestSuite {
     @BeforeClass
@@ -18,17 +19,18 @@ public class ShapeCollectorTestSuite {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        boolean result = shapeCollector.addFigure(new Square("Square1", 5));
+        shapeCollector.addFigure(new Square(5));
         //Then
-        Assert.assertTrue(result);
+        Assert.assertEquals(1, shapeCollector.shapes.size());
     }
 
     @Test
     public void testRemoveFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(new Square(5));
         //When
-        boolean result = shapeCollector.removeFigure(new Square("Square1", 5));
+        boolean result = shapeCollector.removeFigure(new Square(5));
         //Then
         Assert.assertTrue(result);
     }
@@ -37,11 +39,28 @@ public class ShapeCollectorTestSuite {
     public void testGetShape() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Square square1 = new Square("Square1", 5);
+        Square square1 = new Square(5);
         shapeCollector.addFigure(square1);
         //When
         Shape result = shapeCollector.getShape(0);
         //Then
         Assert.assertEquals(square1, result);
+    }
+
+    @Test
+    public void testShowFigure() {
+        //Given
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(stream);
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(new Square(5));
+        PrintStream originalPrintStream = System.out;
+        System.setOut(ps);
+        //When
+        shapeCollector.showFigures();
+        //Then
+        Assert.assertEquals("Square(5,000000)" + System.getProperty("line.separator"), stream.toString());
+
+        System.setOut(originalPrintStream);
     }
 }

@@ -3,12 +3,15 @@ package com.kodilla.testing.shape;
 import java.util.Objects;
 
 public class Circle implements Shape{
-    private String shapeName;
-    private double field;
+    private static final String NAME = "Circle";
+    private double radius;
 
-    public Circle(String shapeName, double r) {
-        this.shapeName = shapeName;
-        this.field = Math.PI * Math.pow(r, 2);
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    private double field() {
+        return Math.PI * Math.pow(radius, 2);
     }
 
     @Override
@@ -16,28 +19,24 @@ public class Circle implements Shape{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Circle circle = (Circle) o;
-        return Double.compare(circle.field, field) == 0 &&
-                Objects.equals(shapeName, circle.shapeName);
+        return Double.compare(circle.radius, radius) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shapeName, field);
+        return Objects.hash(radius);
     }
 
     @Override
     public String toString() {
-        return "Circle{" +
-                "shapeName='" + shapeName + '\'' +
-                ", field=" + field +
-                '}';
+        return String.format("%s(%f)", NAME, radius);
     }
 
     public String getShapeName() {
-        return shapeName;
+        return NAME;
     }
 
     public double getField() {
-        return field;
+        return field();
     }
 }

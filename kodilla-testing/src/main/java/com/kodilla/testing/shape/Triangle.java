@@ -3,12 +3,16 @@ package com.kodilla.testing.shape;
 import java.util.Objects;
 
 public class Triangle implements Shape{
-    private String shapeName;
-    private double field;
+    private static final String NAME = "Triangle";
+    private double side, height;
 
-    public Triangle(String shapeName, double a, double h) {
-        this.shapeName = shapeName;
-        this.field = 0.5 * a * h;
+    public Triangle(double side, double height) {
+        this.side = side;
+        this.height = height;
+    }
+
+    private double field() {
+        return 0.5 * side * height;
     }
 
     @Override
@@ -16,28 +20,25 @@ public class Triangle implements Shape{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Triangle triangle = (Triangle) o;
-        return Double.compare(triangle.field, field) == 0 &&
-                Objects.equals(shapeName, triangle.shapeName);
+        return Double.compare(triangle.side, side) == 0 &&
+                Double.compare(triangle.height, height) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shapeName, field);
+        return Objects.hash(side, height);
     }
 
     @Override
     public String toString() {
-        return "Triangle{" +
-                "shapeName='" + shapeName + '\'' +
-                ", field=" + field +
-                '}';
+        return String.format("%s(%f%f)", NAME, side, height);
     }
 
     public String getShapeName() {
-        return shapeName;
+        return NAME;
     }
 
     public double getField() {
-        return field;
+        return field();
     }
 }
