@@ -1,12 +1,12 @@
 package com.kodilla.testing.forum.statistics;
 
 public class ForumStatistics {
-    int quantityOfUsers;
-    int quanitiyyOfPosts;
-    int quantityOfComments;
-    double averageQuanitiyyOfPosts;
-    double averageQuantityOfComments;
-    double averageQuantityOfCommentsPerPost;
+    private int quantityOfUsers;
+    private int quanitiyyOfPosts;
+    private int quantityOfComments;
+    private double averageQuanitiyyOfPosts;
+    private double averageQuantityOfComments;
+    private double averageQuantityOfCommentsPerPost;
 
     public void calculateAdvStatistics(Statistics statistics) {
         quantityOfUsers = statistics.usersNames().size();
@@ -23,6 +23,30 @@ public class ForumStatistics {
                 averageQuantityOfCommentsPerPost = (double) quantityOfComments / (double) quanitiyyOfPosts;
             }
         }
+    }
+
+    public int getQuantityOfUsers() {
+        return quantityOfUsers;
+    }
+
+    public int getQuanitiyyOfPosts() {
+        return quanitiyyOfPosts;
+    }
+
+    public int getQuantityOfComments() {
+        return quantityOfComments;
+    }
+
+    public double getAverageQuanitiyyOfPosts() {
+        return averageQuanitiyyOfPosts;
+    }
+
+    public double getAverageQuantityOfComments() {
+        return averageQuantityOfComments;
+    }
+
+    public double getAverageQuantityOfCommentsPerPost() {
+        return averageQuantityOfCommentsPerPost;
     }
 
     public void showStatistics() {
