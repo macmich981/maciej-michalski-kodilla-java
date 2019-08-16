@@ -1,15 +1,12 @@
 package com.kodilla.testing.library;
 
 import org.junit.*;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
-
 
 public class BookDirectoryTestSuite {
     private List<Book> generateListOfNBooks(int booksQuantity) {
@@ -84,5 +81,30 @@ public class BookDirectoryTestSuite {
             assertEquals(0, theListOfBooks10.size());
             verify(libraryDatabaseMock, times(0)).listBooksWithCondiotion(anyString());
     }
+//Zadanie
 
+    @Test
+    public void testListBooksInHandsOf() {
+        //Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser1 = new LibraryUser("My First Name", "My Last Name", "000000");
+        LibraryUser libraryUser2 = new LibraryUser("Jan", "Kowalski", "1111111");
+        LibraryUser libraryUser3 = new LibraryUser("Tadzio", "Nowak", "2222222");
+
+        List<Book> rentedBooks1 = new ArrayList<>();
+        List<Book> rentedBooks2 = generateListOfNBooks(1);
+        List<Book> rentedBooks3 = generateListOfNBooks(5);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1)).thenReturn(rentedBooks1);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser2)).thenReturn(rentedBooks2);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser3)).thenReturn(rentedBooks3);;
+        //When
+        int result1 = bookLibrary.listBooksInHandsOf(libraryUser1);
+        int result2 = bookLibrary.listBooksInHandsOf(libraryUser2);
+        int result3 = bookLibrary.listBooksInHandsOf(libraryUser3);
+        //Then
+        Assert.assertEquals(0, result1);
+        Assert.assertEquals(1, result2);
+        Assert.assertEquals(5, result3);
+    }
 }
