@@ -1,14 +1,17 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        BookDirectory theBookDirectory = new BookDirectory();
+        String theResultStringOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .map(Book::toString)
+                .collect(Collectors.joining(",\n","<<",">>"));
 
-        poemBeautifier.beautify("cicho bo przyjdzie Zdzicho", (textToDecorate) -> textToDecorate.toUpperCase());
-        poemBeautifier.beautify("Intergalactic Wars", (textToDecorate) -> "***" + textToDecorate + "***");
-        poemBeautifier.beautify("Siała baba mak", (textToDecorate) -> textToDecorate.replace('a', 'u'));
-        poemBeautifier.beautify("To już jest koniec.", (textToDecorate) -> textToDecorate.concat("EndOFExercise"));
+        System.out.println(theResultStringOfBooks);
     }
 }
