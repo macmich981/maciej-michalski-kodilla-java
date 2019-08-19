@@ -7,14 +7,14 @@ public final class ForumUser {
     private final String userName;
     private final char sex;
     private final LocalDate dayOfBirth;
-    private final int publishedPosts;
+    private final int numberOfPosts;
 
-    public ForumUser(final int identityNumber, final String userName, final char sex, final LocalDate dayOfBirth, final int publishedPosts) {
+    public ForumUser(final int identityNumber, final String userName, final char sex, final LocalDate dayOfBirth, final int numberOfPosts) {
         this.identityNumber = identityNumber;
         this.userName = userName;
         this.sex = sex;
         this.dayOfBirth = dayOfBirth;
-        this.publishedPosts = publishedPosts;
+        this.numberOfPosts = numberOfPosts;
     }
 
     public int getIdentityNumber() {
@@ -33,8 +33,8 @@ public final class ForumUser {
         return dayOfBirth;
     }
 
-    public int getPublishedPosts() {
-        return publishedPosts;
+    public int getNumberOfPosts() {
+        return numberOfPosts;
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class ForumUser {
                 ", userName='" + userName + '\'' +
                 ", sex=" + sex +
                 ", dayOfBirth=" + dayOfBirth +
-                ", publishedPosts=" + publishedPosts +
+                ", numberOfPosts=" + numberOfPosts +
                 '}';
     }
 }
