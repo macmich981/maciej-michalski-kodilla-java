@@ -21,9 +21,9 @@ public class RpsRunner {
         System.out.println("Liczba rund wygranych przez " + player.getName() + ": " + player.getPoints());
         System.out.println("Liczba rund wygranych przez komputer " + computerPlayer.getPoints());
 
-        System.out.println("Zwycięzcą gry zostaje: ");
+        System.out.print("Zwycięzcą gry zostaje: ");
         if (player.getPoints() > computerPlayer.getPoints()) {
-            System.out.print(player.getName());
+            System.out.println(player.getName());
         } else {
             System.out.println("komputer");
         }
