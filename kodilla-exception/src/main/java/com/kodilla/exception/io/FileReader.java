@@ -1,6 +1,7 @@
 package com.kodilla.exception.io;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,8 +12,12 @@ public class FileReader {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("file/names.txt").getFile());
         Path path = Paths.get(file.getPath());
-        Stream<String> fileLines = Files.lines(path);
 
-        System.out.println(file.getPath());
+        try {
+            Stream<String> fileLines = Files.lines(path);
+            fileLines.forEach(System.out::println);
+        } catch (IOException r) {
+            System.out.println("Oh no! Something went wrong!");
+        }
     }
 }
