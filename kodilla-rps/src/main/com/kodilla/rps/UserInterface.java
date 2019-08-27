@@ -1,4 +1,4 @@
-package src.main.com.kodilla.rps;
+package com.kodilla.rps;
 
 public interface UserInterface {
     String initName();
