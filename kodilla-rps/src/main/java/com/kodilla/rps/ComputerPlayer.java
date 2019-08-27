@@ -4,10 +4,11 @@ import java.util.Random;
 
 public class ComputerPlayer {
     private static final Random RANDOM = new Random();
+    private static final int maxMoveToChooseByComputer = 3;
     private int points = 0;
 
-    public int getInput() {
-        return RANDOM.nextInt(3) + 1;
+    public int getMove() {
+        return RANDOM.nextInt(maxMoveToChooseByComputer) + 1;
     }
 
     public void addPoint() {
