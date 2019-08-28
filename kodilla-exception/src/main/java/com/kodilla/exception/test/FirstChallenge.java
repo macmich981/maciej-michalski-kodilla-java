@@ -17,7 +17,8 @@ public class FirstChallenge {
         } catch (ArithmeticException e) {
             System.out.println("Błąd: Dzielenie przez 0");
         } finally {
-            System.out.println("Pamiętaj cholero nie dziel przez zero");
+            System.out.println("Jestem po bloku \"try - catch\"");
         }
+        System.out.println("Koniec programu!");
     }
 }
