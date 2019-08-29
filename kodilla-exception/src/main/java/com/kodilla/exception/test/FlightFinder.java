@@ -3,14 +3,14 @@ package com.kodilla.exception.test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LookAtFlight {
-    public void findFlight(Flight flight) throws RouteNotFoundException {
-        Map<String, Boolean> flights = initFlights();
+public class FlightFinder {
+    private Map<String, Boolean> flights = initFlights();
 
+    public boolean findFlight(Flight flight) throws RouteNotFoundException {
         if (flights.containsKey(flight.getArrivalAirport())) {
-            System.out.println(flight.getArrivalAirport() + ": " + flights.get(flight.getArrivalAirport()));
+            return flights.get(flight.getArrivalAirport());
         } else {
-            throw new RouteNotFoundException();
+            throw new RouteNotFoundException("Arrival airport is not on the list");
         }
     }
 

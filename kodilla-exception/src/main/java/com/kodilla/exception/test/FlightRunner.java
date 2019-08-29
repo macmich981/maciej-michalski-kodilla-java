@@ -3,12 +3,12 @@ package com.kodilla.exception.test;
 public class FlightRunner {
     public static void main(String args[]) {
         try {
-            new LookAtFlight().findFlight(new Flight("Heathrow", "Berlin"));
+            Flight flight = new Flight("Heathrow", "Berlin");
+            System.out.println(flight.getArrivalAirport() + ": " + new FlightFinder().findFlight(flight));
         } catch (RouteNotFoundException e) {
-            System.out.println("Błąd: brak połączeń z tym lotniskiem: " + e);
+            e.printStackTrace();
         } finally {
-            System.out.println("Po bloku \"try - catch\"");
+            System.out.println("Koniec programu!");;
         }
-        System.out.println("Koniec programu!");
     }
 }
