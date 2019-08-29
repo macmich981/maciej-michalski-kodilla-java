@@ -18,7 +18,7 @@ public class Game {
             userInterface.printMenu();
             int roundResult = new Round(userInterface).roundResult(player, computerPlayer);
             if (roundResult == Move.END_OF_GAME) {
-                break;
+                return GameResult.END;
             } else if (roundResult == Move.NEW_GAME) {
                 return GameResult.NEXT;
             }

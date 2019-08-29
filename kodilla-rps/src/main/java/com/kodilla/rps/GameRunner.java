@@ -13,12 +13,12 @@ public class GameRunner {
 
     public boolean run() {
         Game game = new Game(userInterface, userName, maxNumberOfRounds);
+        GameResult gameResult = game.start();
 
         while (true) {
-            GameResult gameResult = game.start();
             if (gameResult == GameResult.NEXT) {
                 if (!userInterface.confirmNext()) {
-                    continue;
+                    gameResult = game.start();
                 } else {
                     return false;
                 }
@@ -26,10 +26,9 @@ public class GameRunner {
                 if (userInterface.confirmEnd()) {
                     return true;
                 } else {
-                    break;
+                    return false;
                 }
             }
         }
-        return false;
     }
 }

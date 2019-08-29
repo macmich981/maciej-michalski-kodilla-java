@@ -2,6 +2,8 @@ package com.kodilla.rps;
 
 import java.util.Scanner;
 
+import static com.kodilla.rps.Result.COMPUTER_WIN;
+
 public class SimpleUserInterface implements UserInterface{
     public String initName() {
         Scanner in = new Scanner(System.in);
@@ -52,16 +54,16 @@ public class SimpleUserInterface implements UserInterface{
 
     public void informRound(int roundResult, Player player, ComputerPlayer computerPlayer) {
         switch (roundResult) {
-            case 0:
+            case Result.DRAW:
                 System.out.println("Remis");
                 break;
 
-            case 1:
-                System.out.println(player.getName() + " pokonuje komputer. Wygrałeś rundę!");
+            case Result.PLAYER_WIN:
+                System.out.println(player.getName() + " pokonuje " + computerPlayer.getComputerName() + ". Wygrałeś rundę!");
                 break;
 
-            case -1:
-                System.out.println("Komputer pokonuje " + player.getName());
+            case COMPUTER_WIN:
+                System.out.println(computerPlayer.getComputerName() + " pokonuje " + player.getName());
                 break;
         }
         System.out.println(player.getName() + ": " + player.getPoints());

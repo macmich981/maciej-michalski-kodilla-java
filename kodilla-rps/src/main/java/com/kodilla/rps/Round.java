@@ -16,15 +16,15 @@ public class Round {
             return Move.NEW_GAME;
         } else {
             int computerPlayerMove = computerPlayer.getMove();
-            userInterface.displayMove("Komputer", computerPlayerMove);
+            userInterface.displayMove(computerPlayer.getComputerName(), computerPlayerMove);
             int result = new RoundResolver().resolve(playerMove, computerPlayerMove);
             switch (result) {
-                case 0: //Remis
+                case Result.DRAW:
                     break;
-                case 1: //Gracz wygrywa
+                case Result.PLAYER_WIN:
                     player.addPoint();
                     break;
-                case -1: //Komputer wygrywa
+                case Result.COMPUTER_WIN:
                     computerPlayer.addPoint();
                     break;
             }
