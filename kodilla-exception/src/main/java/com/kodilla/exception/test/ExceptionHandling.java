@@ -8,8 +8,7 @@ public class ExceptionHandling {
         } catch (Exception e) {
             System.out.println("Błąd: niewłaściwe dane: " + e);
         } finally {
-            System.out.println("Jestem po bloku \"try - catch\"");
+            System.out.println("Koniec programu!");
         }
-        System.out.println("Koniec programu!");
     }
 }
