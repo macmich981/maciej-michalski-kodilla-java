@@ -26,7 +26,11 @@ public class GameRunner {
                 if (userInterface.confirmEnd()) {
                     return true;
                 } else {
-                    return false;
+                    if (game.getMaxNumberOfRounds() == game.getPlayer().getPoints() ||
+                    game.getMaxNumberOfRounds() == game.getComputerPlayer().getPoints()) {
+                        return false;
+                    }
+                    gameResult = game.start();
                 }
             }
         }

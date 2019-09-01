@@ -27,4 +27,16 @@ public class Game {
         userInterface.summaryOfGame(player, computerPlayer);
         return GameResult.END;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public ComputerPlayer getComputerPlayer() {
+        return computerPlayer;
+    }
+
+    public int getMaxNumberOfRounds() {
+        return maxNumberOfRounds;
+    }
 }
