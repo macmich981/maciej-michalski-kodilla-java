@@ -1,4 +1,4 @@
-package com.kodilla;
+package com.kodilla.rps;
 
 public class FirstClass {
 }
