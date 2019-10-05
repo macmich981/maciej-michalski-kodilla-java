@@ -1,11 +1,9 @@
-package com.kodilla.good.patterns.food2door;
+package com.kodilla.good.patterns.f2d;
+
+import com.kodilla.good.patterns.food2door.Order;
 
 public class OrderFoodProcess {
-    private OrderFoodRespository orderFoodRespository;
-
-    public OrderFoodProcess(OrderFoodRespository orderFoodRespository) {
-        this.orderFoodRespository = orderFoodRespository;
-    }
+    private OrderFoodRespository orderFoodRespository = new OrderFoodRespository();
 
     public OrderDto run(Order order){
         boolean isOrder = order.process();

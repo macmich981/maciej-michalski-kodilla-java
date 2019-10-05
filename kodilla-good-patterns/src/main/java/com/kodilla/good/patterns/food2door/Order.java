@@ -1,7 +1,10 @@
 package com.kodilla.good.patterns.food2door;
 
-public interface Order {
-    String getProduct();
-    double getQuantity();
-    boolean process();
+import java.util.Map;
+
+public class Order {
+    private Map<Product, Integer> positions;
+
+    //add
+    //gettery
 }

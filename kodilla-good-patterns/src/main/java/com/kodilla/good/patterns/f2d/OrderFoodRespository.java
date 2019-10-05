@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.food2door;
+package com.kodilla.good.patterns.f2d;
 
 public class OrderFoodRespository {
     public boolean createOrder(String companyName, String product, double quantity) {

@@ -1,4 +1,6 @@
-package com.kodilla.good.patterns.food2door;
+package com.kodilla.good.patterns.f2d;
+
+import com.kodilla.good.patterns.food2door.Order;
 
 import java.util.Objects;
 
