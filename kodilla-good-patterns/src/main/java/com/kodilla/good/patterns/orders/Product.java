@@ -6,7 +6,6 @@ public final class Product {
     private final int id;
     private final String name;
     private final double price;
-    public int id;
 
     public Product(final int id, final String name, final double price) {
         this.id = id;
