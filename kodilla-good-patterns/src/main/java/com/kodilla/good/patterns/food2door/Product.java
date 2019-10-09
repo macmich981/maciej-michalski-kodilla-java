@@ -15,7 +15,7 @@ public final class Product {
         return productName;
     }
 
-    public String getContractorName() {
+    public Contractors getContractorName() {
         return contractor.getContractorName();
     }
 

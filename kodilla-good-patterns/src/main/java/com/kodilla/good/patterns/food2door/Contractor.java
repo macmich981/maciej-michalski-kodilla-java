@@ -1,15 +1,15 @@
 package com.kodilla.good.patterns.food2door;
 
 public class Contractor {
-    private String contractorName;
+    private Contractors contractorName;
     private String contractorAddress;
 
-    public Contractor(String contractorName, String contractorAddress) {
+    public Contractor(Contractors contractorName, String contractorAddress) {
         this.contractorName = contractorName;
         this.contractorAddress = contractorAddress;
     }
 
-    public String getContractorName() {
+    public Contractors getContractorName() {
         return contractorName;
     }
 

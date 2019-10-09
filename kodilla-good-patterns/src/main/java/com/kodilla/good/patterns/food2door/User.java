@@ -22,4 +22,13 @@ public final class User {
     public String getUserAddress() {
         return userAddress;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", userSurname='" + userSurname + '\'' +
+                ", userAddress='" + userAddress + '\'' +
+                '}';
+    }
 }
