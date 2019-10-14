@@ -26,13 +26,8 @@ public final class Calculator {
     }
 
     public double div(double a, double b) {
-        try {
-            double result = a / b;
-            if (result == Double.POSITIVE_INFINITY || result == Double.NEGATIVE_INFINITY) {
-                throw new ArithmeticException();
-            }
-        } catch (ArithmeticException e) {
-            System.out.println("UWAGA: Dzielenie przez 0!");
+        if (b == 0) {
+            throw new ArithmeticException("Dividing by zero!");
         }
         display.displayValue(a / b);
         return a / b;

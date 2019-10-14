@@ -58,4 +58,15 @@ public class CalculatorTestSuite {
         //Then
         Assert.assertEquals(6, result, 0.01);
     }
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivisionByZero()  {
+        //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring.calculator");
+        Calculator calculator = context.getBean(Calculator.class);
+        //When
+        calculator.div(12, 0);
+        //Then
+    }
 }
