@@ -1,6 +1,6 @@
 package com.kodilla.patterns.factory.tasks;
 
-public final class ShoppingTaskFactory implements AbstractTaskFactory {
+public final class ShoppingTaskFactory implements TaskFactory {
     private final String taskName;
     private final String whatToBuy;
     private final double quantity;

@@ -3,14 +3,15 @@ package com.kodilla.patterns.factory.tasks;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TaskFactoryTestSuite {
+public class TaskProducerTestSuite {
     @Test
     public void testFactoryDriving() {
         //Given
-        TaskFactory taskFactory = new TaskFactory();
+        TaskProducer taskProducer = new TaskProducer();
         //When
-        Task driving = taskFactory.makeTask(new DrivingTaskFactory("Driving", "Home", "my car"));
+        Task driving = taskProducer.makeTask(new DrivingTaskFactory("Driving", "Home", "my car"));
         //Then
+        driving.executeTask();
         Assert.assertEquals("Driving", driving.getTaskName());
         Assert.assertTrue(driving.isTaskExecuted());
     }
@@ -18,10 +19,11 @@ public class TaskFactoryTestSuite {
     @Test
     public void testFactoryPainting() {
         //Given
-        TaskFactory taskFactory = new TaskFactory();
+        TaskProducer taskProducer = new TaskProducer();
         //When
-        Task painting = taskFactory.makeTask(new PaintingTaskFactory("Painting", "Red", "Wall"));
+        Task painting = taskProducer.makeTask(new PaintingTaskFactory("Painting", "Red", "Wall"));
         //Then
+        painting.executeTask();
         Assert.assertEquals("Painting", painting.getTaskName());
         Assert.assertTrue(painting.isTaskExecuted());
     }
@@ -29,10 +31,11 @@ public class TaskFactoryTestSuite {
     @Test
     public void testFactoryShopping() {
         //Given
-        TaskFactory taskFactory = new TaskFactory();
+        TaskProducer taskProducer = new TaskProducer();
         //When
-        Task shopping = taskFactory.makeTask(new ShoppingTaskFactory("Shopping", "Bread", 10));
+        Task shopping = taskProducer.makeTask(new ShoppingTaskFactory("Shopping", "Bread", 10));
         //Then
+        shopping.executeTask();
         Assert.assertEquals("Shopping", shopping.getTaskName());
         Assert.assertTrue(shopping.isTaskExecuted());
     }

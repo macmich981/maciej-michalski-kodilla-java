@@ -1,6 +1,6 @@
 package com.kodilla.patterns.factory.tasks;
 
-public final class DrivingTaskFactory implements AbstractTaskFactory {
+public final class DrivingTaskFactory implements TaskFactory {
     private final String taskName;
     private final String where;
     private final String using;

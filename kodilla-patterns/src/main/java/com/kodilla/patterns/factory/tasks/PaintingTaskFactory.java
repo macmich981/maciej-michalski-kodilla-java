@@ -1,6 +1,6 @@
 package com.kodilla.patterns.factory.tasks;
 
-public final class PaintingTaskFactory implements AbstractTaskFactory {
+public final class PaintingTaskFactory implements TaskFactory {
     private final String taskName;
     private final String color;
     private final String whatToPaint;
