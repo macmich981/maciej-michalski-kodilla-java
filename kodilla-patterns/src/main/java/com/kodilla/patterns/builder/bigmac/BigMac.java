@@ -1,33 +1,28 @@
 package com.kodilla.patterns.builder.bigmac;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public final class BigMac {
-    private final String bun;
+    private final Bun bun;
     private final int burgers;
-    private final String sauce;
-    private final List<String> ingredients;
-    private static final List ALLOWED_BUN = Arrays.asList("sezam", "");
-    private static final List ALLOWED_SAUCE = Arrays.asList("standard", "1000 wysp", "barbecue", "");
-    private static final List<String> ALLOWED_INGREDIENTS = Arrays.asList("sałata", "cebula", "bekon", "ogorek", "papryczki chili", "pieczarki", "krewetki", "ser");
+    private final Sauce sauce;
+    private final List<Ingredient> ingredients;
 
-    private BigMac(String bun, int burgers, String sauce, List<String> ingredients) {
+    private BigMac(Bun bun, int burgers, Sauce sauce, List<Ingredient> ingredients) {
         this.bun = bun;
         this.burgers = burgers;
         this.sauce = sauce;
         this.ingredients = ingredients;
-
     }
 
     public static class BigMacBuilder {
-        private String bun;
+        private Bun bun;
         private int burgers;
-        private String sauce;
-        private List<String> ingredients = new ArrayList<>();
+        private Sauce sauce;
+        private List<Ingredient> ingredients = new ArrayList<>();
 
-        public BigMacBuilder Bun(String bun) {
+        public BigMacBuilder Bun(Bun bun) {
             this.bun = bun;
             return this;
         }
@@ -37,44 +32,61 @@ public final class BigMac {
             return this;
         }
 
-        public BigMacBuilder Sauce(String sauce) {
+        public BigMacBuilder Sauce(Sauce sauce) {
             this.sauce = sauce;
             return this;
         }
 
-        public BigMacBuilder Ingredients(String ingredient) {
+        public BigMacBuilder Ingredients(Ingredient ingredient) {
             ingredients.add(ingredient);
             return this;
         }
 
         public BigMac build() {
             if (!validateBun(bun)) {
-                throw new IllegalStateException("Unexpected bun");
+                throw new IllegalArgumentException("Unexpected bun");
             }
             if (!validateSauce(sauce)) {
-                throw new IllegalStateException("Unexpected sauce");
+                throw new IllegalArgumentException("Unexpected sauce");
             }
             if (!validateIngredients(ingredients)) {
-                throw new IllegalStateException("Unexpected ingredients");
+                throw new IllegalArgumentException("Unexpected ingredients");
             }
             return new BigMac(bun, burgers, sauce, ingredients);
         }
 
-        private boolean validateBun(String bun) {
-            return ALLOWED_BUN.contains(bun);
+        private boolean validateBun(Bun bun) {
+            for (Bun bunTest : Bun.values()) {
+                if (bunTest.equals(bun)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        private boolean validateSauce(String sauce) {
-            return ALLOWED_SAUCE.contains(sauce);
+        private boolean validateSauce(Sauce sauce) {
+            for (Sauce sauceTest : Sauce.values()) {
+                if (sauceTest.equals(sauce)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        private boolean validateIngredients(List<String> ingredients) {
-            return ALLOWED_INGREDIENTS.containsAll(ingredients);
+        private boolean validateIngredients(List<Ingredient> ingredients) {
+            for (Ingredient ingredient : ingredients) {
+                for (Ingredient ingredientTest : Ingredient.values()) {
+                    if (ingredientTest.equals(ingredient)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
     }
 
-    public String getBun() {
+    public Bun getBun() {
         return bun;
     }
 
@@ -82,11 +94,11 @@ public final class BigMac {
         return burgers;
     }
 
-    public String getSauce() {
+    public Sauce getSauce() {
         return sauce;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 

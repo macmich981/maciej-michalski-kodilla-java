@@ -8,63 +8,63 @@ public class BigmacTestSuite {
     public void testBigMacBuilder() {
         //Given
         BigMac bigMac = new BigMac.BigMacBuilder()
-        .Bun("sezam")
+        .Bun(Bun.SEZAM)
         .Burgers(2)
-        .Sauce("standard")
-        .Ingredients("cebula")
-        .Ingredients("ser")
-        .Ingredients("bekon")
+        .Sauce(Sauce.STANDARD)
+        .Ingredients(Ingredient.ONION)
+        .Ingredients(Ingredient.CHEESE)
+        .Ingredients(Ingredient.BACON)
         .build();
         //When
         //Then
         System.out.println(bigMac);
-        Assert.assertEquals("sezam", bigMac.getBun());
-        Assert.assertEquals("standard", bigMac.getSauce());
+        Assert.assertEquals(Bun.SEZAM, bigMac.getBun());
+        Assert.assertEquals(Sauce.STANDARD, bigMac.getSauce());
         Assert.assertEquals(2, bigMac.getBurgers());
         Assert.assertEquals(3, bigMac.getIngredients().size());
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testBigMacBuilderBadBun() {
         //Given
         BigMac bigMac = new BigMac.BigMacBuilder()
-        .Bun("zwykla")
+        .Bun(Bun.valueOf("normal"))
         .Burgers(2)
-        .Sauce("standard")
-        .Ingredients("cebula")
-        .Ingredients("ser")
-        .Ingredients("bekon")
+        .Sauce(Sauce.STANDARD)
+        .Ingredients(Ingredient.ONION)
+        .Ingredients(Ingredient.CHEESE)
+        .Ingredients(Ingredient.BACON)
         .build();
         //When
         //Then
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testBigMacBuilderBadSauce() {
         //Given
         BigMac bigMac = new BigMac.BigMacBuilder()
-        .Bun("sezam")
+        .Bun(Bun.SEZAM)
         .Burgers(2)
-        .Sauce("czosnkowy")
-        .Ingredients("cebula")
-        .Ingredients("ser")
-        .Ingredients("bekon")
+        .Sauce(Sauce.valueOf("garlic"))
+        .Ingredients(Ingredient.ONION)
+        .Ingredients(Ingredient.CHEESE)
+        .Ingredients(Ingredient.BACON)
         .build();
         //When
         //Then
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testBigMacBuilderBadIngredient() {
         //Given
         BigMac bigMac = new BigMac.BigMacBuilder()
-        .Bun("sezam")
+        .Bun(Bun.SEZAM)
         .Burgers(2)
-        .Sauce("standard")
-        .Ingredients("cebula")
-        .Ingredients("ser")
-        .Ingredients("bekon")
-        .Ingredients("stare jajo")
+        .Sauce(Sauce.STANDARD)
+        .Ingredients(Ingredient.ONION)
+        .Ingredients(Ingredient.CHEESE)
+        .Ingredients(Ingredient.BACON)
+        .Ingredients(Ingredient.valueOf("old egg"))
         .build();
         //When
         //Then
