@@ -28,7 +28,7 @@ public class BigmacTestSuite {
     public void testBigMacBuilderBadBun() {
         //Given
         BigMac bigMac = new BigMac.BigMacBuilder()
-        .Bun(Bun.valueOf("normal"))
+        .Bun(Bun.valueOf("croissant"))
         .Burgers(2)
         .Sauce(Sauce.STANDARD)
         .Ingredients(Ingredient.ONION)

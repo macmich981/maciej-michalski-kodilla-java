@@ -56,8 +56,8 @@ public final class BigMac {
         }
 
         private boolean validateBun(Bun bun) {
-            for (Bun bunTest : Bun.values()) {
-                if (bunTest.equals(bun)) {
+            for (Bun theBun : Bun.values()) {
+                if (theBun == bun) {
                     return true;
                 }
             }
@@ -65,8 +65,8 @@ public final class BigMac {
         }
 
         private boolean validateSauce(Sauce sauce) {
-            for (Sauce sauceTest : Sauce.values()) {
-                if (sauceTest.equals(sauce)) {
+            for (Sauce theSauce : Sauce.values()) {
+                if (theSauce == sauce) {
                     return true;
                 }
             }
@@ -75,8 +75,8 @@ public final class BigMac {
 
         private boolean validateIngredients(List<Ingredient> ingredients) {
             for (Ingredient ingredient : ingredients) {
-                for (Ingredient ingredientTest : Ingredient.values()) {
-                    if (ingredientTest.equals(ingredient)) {
+                for (Ingredient ing : Ingredient.values()) {
+                    if (ing == ingredient) {
                         return true;
                     }
                 }
