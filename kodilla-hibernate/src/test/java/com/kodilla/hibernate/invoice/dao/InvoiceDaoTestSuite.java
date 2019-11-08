@@ -16,40 +16,36 @@ import java.math.BigDecimal;
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
-    private ProductDao productDao;
-    @Autowired
-    private ItemDao itemDao;
-    @Autowired
     private InvoiceDao invoiceDao;
 
     @Test
     public void testInvoiceDaoSave() {
         //Given
         Product product = new Product("warhammer");
+        Product product1 = new Product("long sword");
         Item item = new Item(new BigDecimal("10"), 15);
+        Item item1 = new Item(new BigDecimal("5"), 20);
         Invoice invoice = new Invoice("1/11/2019");
 
         item.setProduct(product);
         item.setInvoice(invoice);
+        item1.setProduct(product1);
+        item1.setInvoice(invoice);
         product.getItems().add(item);
+        product1.getItems().add(item1);
         invoice.getItems().add(item);
+        invoice.getItems().add(item1);
 
         //When
         invoiceDao.save(invoice);
-        productDao.save(product);
-        itemDao.save(item);
-
-        int productId = product.getId();
-        int itemId = item.getId();
         int invoiceId = invoice.getId();
 
         //Then
-        Assert.assertNotEquals(0, productId);
-        Assert.assertNotEquals(0, itemId);
-        Assert.assertNotEquals(0, invoiceId);
+        Assert.assertEquals(2, invoice.getItems().size());
+        Assert.assertEquals("warhammer", invoice.getItems().get(0).getProduct().getName());
+        Assert.assertEquals("long sword", invoice.getItems().get(1).getProduct().getName());
 
         //CleanUp
-        productDao.deleteById(productId);
         invoiceDao.deleteById(invoiceId);
     }
 }

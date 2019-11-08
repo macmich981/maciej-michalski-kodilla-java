@@ -42,9 +42,8 @@ public class Product {
     }
 
     @OneToMany(
-            targetEntity = Item.class,
             mappedBy = "product",
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.PERSIST,
             fetch = FetchType.LAZY
     )
     public List<Item> getItems() {

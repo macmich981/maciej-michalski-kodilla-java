@@ -41,7 +41,6 @@ public class Invoice {
     }
 
     @OneToMany(
-            targetEntity = Item.class,
             mappedBy = "invoice",
             fetch = FetchType.LAZY
     )
