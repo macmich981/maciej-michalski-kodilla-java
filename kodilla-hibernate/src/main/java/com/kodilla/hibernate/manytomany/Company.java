@@ -10,6 +10,10 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) LIKE :COMPANY_NAME",
         resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.retrieveCompaniesWithSpecificFragment",
+        query = "FROM Company WHERE name LIKE CONCAT(\'%\', :COMPANY_NAME, \'%\')"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

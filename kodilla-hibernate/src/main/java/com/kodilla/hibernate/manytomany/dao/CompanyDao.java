@@ -12,4 +12,7 @@ import java.util.List;
 public interface CompanyDao extends CrudRepository<Company, Integer> {
     @Query(nativeQuery = true)
     List<Company> retrieveCompaniesWithTheSameBegining(@Param("COMPANY_NAME") String name);
+
+    @Query
+    List<Company> retrieveCompaniesWithSpecificFragment(@Param("COMPANY_NAME") String searchFragment);
 }
