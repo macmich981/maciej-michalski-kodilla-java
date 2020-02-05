@@ -1,0 +1,18 @@
+DROP FUNCTION IF EXISTS getReaderNameById;
+
+DELIMITER $$
+
+CREATE FUNCTION getReaderNameById(readerId INT) RETURNS VARCHAR (255) DETERMINISTIC
+BEGIN
+	DECLARE result VARCHAR(20) DEFAULT 'User not found';
+    IF readerId <= 0 THEN
+		SET result = 'wrong ID';
+	ELSE
+		SELECT LASTNAME INTO result FROM readers WHERE READER_ID = readerId;
+	END IF;
+	RETURN result;
+END $$
+
+DELIMITER ;
+
+SELECT getReaderNameById(3) AS LEVEL;
