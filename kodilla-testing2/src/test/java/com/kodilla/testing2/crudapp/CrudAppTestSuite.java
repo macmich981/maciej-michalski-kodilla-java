@@ -2,9 +2,9 @@ package com.kodilla.testing2.crudapp;
 
 import com.kodilla.testing2.config.WebDriverConfig;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -69,6 +69,11 @@ public class CrudAppTestSuite {
                     buttonCreateCard.click();
                 });
         Thread.sleep(5000);
+
+        Alert alert = webDriver.switchTo().alert();
+        String alertMessage = webDriver.switchTo().alert().getText();
+        Thread.sleep(5000);
+        alert.accept();
     }
 
     private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException {
@@ -99,10 +104,29 @@ public class CrudAppTestSuite {
         return result;
     }
 
+    private void deleteTask(String taskName) throws InterruptedException {
+        webDriver.get(BASE_URL);
+
+        while (!webDriver.findElement(By.xpath("//select[1]")).isDisplayed());
+
+        Thread.sleep(2000);
+
+        webDriver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm ->
+                        anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                                .getText().equals(taskName))
+                .forEach(theForm -> {
+                    WebElement deleteButton =
+                            theForm.findElement(By.xpath(".//button[contains(text(), 'Delete')]"));
+                    deleteButton.click();
+                });
+    }
+
     @Test
     public void shouldCreateTrelloCard() throws InterruptedException {
         String taskName = createCrudAppTestTask();
-        sendTestTaskToTrello(taskName);
-        Assert.assertTrue(checkTaskExistsInTrello(taskName));
+        //sendTestTaskToTrello(taskName);
+        //Assert.assertTrue(checkTaskExistsInTrello(taskName));
+        deleteTask(taskName);
     }
 }
